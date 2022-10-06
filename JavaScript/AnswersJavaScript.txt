@@ -1,0 +1,206 @@
+Vanilla JS—----------------------------------------------------------------------------------------------------------
+
+alert(typeof(squareOfTo)); returns "undefined" because the variable "squareOfA" does not exist until the function is declared by scope.
+
+If it is all to small letters: alert(s2. toLowerCase ());
+
+mostrar = function(param) { param() };
+mostrar(showString => console.log("Openbravo!!!"));
+
+function isDiagonal (matrixParam){
+    let isDiagonalOrNot = true;
+    for (auxRow in matrixParam){
+        for (auxColumn in matrixParam[auxRow]){
+            if ((auxRow!=auxColumn)&&(matrixParam[auxRow][auxColumn]!=0)){
+                isDiagonalOrNot = false;
+            }            
+        }
+    }
+    return isDiagonalOrNot;
+}
+
+console.log(isDiagonal(matrix));
+
+ReactJs—------------------------------------------------------------------------------------------------------------
+
+1-What are props in a component? Select all the options that apply. 
+
+SELECT ● Are the component parameters 
+● is the state of the component 
+SELECT ● It is a mechanism to put data inside the component
+
+2-What is a component? Mark only one option. 
+
+● An element 
+SELECT ● A function or class that returns an element 
+● An element that returns a function or class 
+● Other:___________________________
+
+3-Which of these component types are valid? Select all the options that apply. 
+
+● Complete Component 
+SELECT ● Class Component 
+SELECT ● Component Function 
+● Parent Component 
+● Child Component
+
+4-What is the state of a component?
+
+The state is a built-in React object that is used to contain data or information about the component.
+
+5-What are the component lifecycle methods?
+
+Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
+The three phases are: Mounting, Updating, and Unmounting.
+
+6-How would you set the state of a component?
+
+	class ComponentDate extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {date: this.props.date};
+        }
+
+        render() {
+            return (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>It is {this.state.date}</h2>
+            </div>
+            );
+        }
+    }
+
+
+7-Which of these implementations change the state of a component? Check only one option.
+
+● this.state.value = "my value" 
+SELECT ● this.setState({ value: "my value" }) 
+● this.state = { "value": "my value" } 
+● Others:_____________________________
+
+8-What happens when we change the state of a component?
+
+When you call setState(), React merges the object you provide into the current state.
+
+9-Write a component that renders a list of elements, given a prop that contains an array of objects in the following form: { firstname: "demo", lastname: "demo", dni: 1234 }
+
+import React from "react";
+
+export default class MyComponent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {listOfPersons: this.props.listOfPersons};
+    }
+    render(){
+        return(
+            <ul>
+                {this.state.listOfPersons.map((persons,index)=> 
+                    <li key={index}>
+                        <h1>name: {persons.firstname}</h1>
+                        <h1>lastname: {persons.lastname}</h1>
+                        <h1>dni: {persons.dni}</h1>
+                    </li>
+                )}
+            </ul>
+            
+        );
+    }
+
+}
+
+FUNCTIONAL CODE IN /reactexercises/src/components/MyComponent
+
+10-Write a component that receives a prop called "data", and renders an H1 with the content of data.
+
+
+const ComponentData = (props) => {
+
+    return (
+        <div>
+            <h3>Data: {props.data}</h3>
+        </div>
+     )   
+
+};
+
+export default ComponentData;
+
+FUNCTIONAL CODE IN /reactexercises/src/components/ComponentData
+
+11-How do you import Javascript modules installed with NPM or YARN? Check only one option.
+
+● import name from 'node_modules/name'; 
+● import name from '../../node_modules/name/name.js' 
+● import name from '../../node_modules/name/index.js' 
+SELECT ● import name from 'name'; 
+● Others:____________________________________ 
+
+12-How do I import the following component, considering that it is inside a file in the same directory, called MyComponent.js? Mark only one option. 
+
+SELECT ● import MyComponent from './MyComponent'; 
+● import { MyComponent } from 'MyComponent'; 
+● import MyComponent from 'MyComponent.js'; 
+● import { MyComponent } from './MyComponent.js';
+● Others:__________________________________________
+
+
+13-ANSWER: The errors is that dont returns nothing
+
+
+14-ANSWER: Show up the count of clicks on the button
+
+
+15-ANSWER: Would declare setState with keys like: this.setState({property: ‘Propiedad’}) and declare inside constructor
+
+
+16-How would you make a Rest API call from JavaScript?
+
+I use axios like: 
+
+axios.get('https://google-translate1.p.rapidapi.com/language/translate/v2/detect')
+  .then(function (response) {
+    // function to be executed when receiving a response
+    console.log(response);
+  })
+  .catch(function (error) {
+    // function to catch the error
+    console.log(error);
+  })
+  .then(function () {
+    // function that always runs
+  });
+
+
+
+17-What is the use of the useEffect hook?
+
+The useEffect Hook allows you to perform side effects in your components.
+Some examples of side effects are: fetching data, directly updating the DOM, and timers. useEffect accepts two arguments. The second argument is optional.
+useEffect(<function>, <dependency>)
+
+18-How would you develop a custom hook that exposes methods to save and modify a counter? The hook must have a parameter 
+that allows the developer to specify how much the counter should add for each call to the setter.
+
+import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom/client";
+
+const Counter = (props) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(()=>{
+        setTimeout(() => {
+            setCount((count) => count + props.value);
+        }, 1000);
+    })
+     return (
+        <div>
+            <div>Count: {count}</div>
+        </div>
+     )   
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+export default Counter;
+
+FUNCTIONAL CODE IN /reactexercises/src/components/Counter
